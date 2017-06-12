@@ -22,12 +22,12 @@
     "watchify": "^3.8.0"
   },
   "scripts": {
-    "build": "browserify src/embed/with-analytics.js | derequire | uglifyjs -c > build/embed.min.js && npm run build-three-closure",
-    "build-api": "browserify --standalone VRView src/api/main.js | derequire | uglifyjs -c > build/vrview.min.js",
-    "watch": "watchify src/embed/main.js -v -d -o build/embed.js",
-    "watch-api": "watchify --standalone VRView src/api/main.js -v -d -o build/vrview.js",
-    "build-three-closure": "rollup -c src/third_party/three/rollup.config.js && java -jar src/third_party/three/closure-compiler-v20160713.jar --warning_level=VERBOSE --jscomp_off=globalThis --jscomp_off=checkTypes --externs src/third_party/three/externs.js --language_in=ECMASCRIPT5_STRICT --js build/three.js --js_output_file build/three.min.js",
-    "build-dms": "uglifyjs scripts/js/device-motion-sender.js > build/device-motion-sender.min.js"
+    "build": "mkdir -p build && browserify src/embed/with-analytics.js | derequire | uglifyjs -c > build/embed.min.js && npm run build-three-closure",
+    "build-api": "mkdir -p build && browserify --standalone VRView src/api/main.js | derequire | uglifyjs -c > build/vrview.min.js",
+    "watch": "mkdir -p build && watchify src/embed/main.js -v -d -o build/embed.js",
+    "watch-api": "mkdir -p build && watchify --standalone VRView src/api/main.js -v -d -o build/vrview.js",
+    "build-three-closure": "mkdir -p build && rollup -c src/third_party/three/rollup.config.js && java -jar src/third_party/three/closure-compiler-v20160713.jar --warning_level=VERBOSE --jscomp_off=globalThis --jscomp_off=checkTypes --externs src/third_party/three/externs.js --language_in=ECMASCRIPT5_STRICT --js build/three.js --js_output_file build/three.min.js",
+    "build-dms": "mkdir -p build && uglifyjs scripts/js/device-motion-sender.js > build/device-motion-sender.min.js"
   },
   "repository": {
     "type": "git",

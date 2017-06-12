@@ -17,3 +17,6 @@ Relevant commands:
     npm run build-api - builds the JS API.
     npm run watch - auto-builds the iframe embed whenever any source changes.
     npm run watch-api - auto-builds the JS API code whenever any source changes.
+
+Note: you may have to install uglify-js if error "sh: uglifyjs not found":
+$ npm install uglify-js -g
